@@ -1,0 +1,18 @@
+name: 'Publish to cloudlogging'
+description: 'POC action to publish custom metrics to cloudlogging'
+inputs: 
+  logs-path:
+    description: 'Path to deployment details logs'
+    required: true
+  project-id:
+    description: 'Project ID'
+    required: true
+  log-name:
+    description: 'Log name'
+    required: true
+  creds:
+    description: 'Service Principal creds'
+    required: true
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
