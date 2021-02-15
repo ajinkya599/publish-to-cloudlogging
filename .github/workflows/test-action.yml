@@ -1,0 +1,21 @@
+name: Post logs to cloudlogging
+
+on:
+  push:
+    branches: [ check ]
+    paths: [ .github/workflows/test-action.yml ]
+
+jobs:
+  post-logs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Post logs to cloudlogging
+        uses: ajinkya599/publish-to-cloudlogging@dev
+        with:
+          logs-path: sample-deployment-report.json
+          project-id: traceability-demo
+          log-name: deployment-trace
+          creds: ${{ secrets.SP_CREDS }}
